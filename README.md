@@ -193,6 +193,14 @@ HistoryHandler caches the UI state (content of all snippets) in the history entr
 
 You might, however, want to disable the cache for specific snippets (e.g. the shopping cart) so that their content is not reverted when the user navigates through the history. This can be done by adding the `data-naja-history-nocache` attribute to the snippet element.
 
+###### Disabling UI cache
+
+Since 1.6.0, UI cache can be disabled. This is useful if you have large snippets that would overflow the limits that browsers enforce on history state entries.
+
+You can disable the caching mechanism for a single request by adding `historyUiCache: false` to the options or `data-naja-history-cache="off"`  attribute to the element.
+
+The cache can also be disabled globally by setting `naja.historyHandler.uiCache = false`. This prevents HistoryHandler from storing the initial state on page load, and also disables the cache for all requests unless they have the `historyUiCache` option explicitly set to `true` (or `data-naja-history-cache="on"`).
+
 ##### Replace instead of push
 
 If you want to replace the current state instead of pushing a new one, which makes sense for certain types of signals, you can add `history: 'replace'` to the options object (see above) when calling `makeRequest` manually, or add `data-naja-history="replace"` attribute to the `.ajax` element.
