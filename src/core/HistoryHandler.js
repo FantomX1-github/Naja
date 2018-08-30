@@ -89,7 +89,7 @@ export default class HistoryHandler {
 		}
 
 		const method = response.replaceHistory || mode === 'replace' ? 'replaceState' : 'pushState';
-		const uiCache = options.historyUiCache === true || (options.historyUiCache !== false && this.uiCache);
+		const uiCache = options.historyUiCache === true || (options.historyUiCache !== false && this.uiCache); // eslint-disable-line no-extra-parens
 		this.historyAdapter[method](
 			this.buildState(this.href, uiCache),
 			window.document.title,
